@@ -3,13 +3,20 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
+    public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+
         boolean closeProgram = false;
         int choice;
 
         while (!closeProgram) {
+            System.out.println("\t### Tic-Tac-Toe ###");
+            System.out.println();
+            System.out.println("Press 1 - New game");
+            System.out.println("Press 2 - Exit game");
+            System.out.println();
+
             System.out.print("Enter your choice: ");
             while (!input.hasNextInt()) {
                 System.out.println("Wrong input data!");
@@ -19,11 +26,11 @@ public class Main {
             choice = input.nextInt();
             input.nextLine();
             switch (choice) {
-                case 0:      // Start new game
-
-                    break;   // Quit game
-                case 1:
-
+                case 1:      // Start new game
+                    newGame();
+                    break;
+                case 2:      // Quit game
+                    closeProgram = true;
                     break;
                 default:
                     System.out.println("Invalid option!");
@@ -32,6 +39,9 @@ public class Main {
             }
         }
 
+    }
+
+    public static void newGame(){
         boolean gameOver = false;
         boolean player1Turn = false;
         boolean player2Turn = false;
@@ -49,11 +59,11 @@ public class Main {
                 {'|',' ',' ',' ', '|',' ',' ',' ','|',' ',' ',' ','|'},  // 5
                 {'-','-','-','-','-','-','-','-','-','-','-','-','-','-'}  // 6
         };
-                      // 1                            2                            3
+        // 1                            2                            3
         matrix [1][2] = '_';         matrix [1][6] = '_';        matrix [1][10] = '_';
-                      // 4                            5                            6
+        // 4                            5                            6
         matrix [3][2] = '_';         matrix [3][6] = '_';        matrix [3][10] = '_';
-                      // 7                            8                            9
+        // 7                            8                            9
         matrix [5][2] = '_';         matrix [5][6] = '_';        matrix [5][10] = '_';
 
 
@@ -83,4 +93,5 @@ public class Main {
         }
 
     }
+
 }
