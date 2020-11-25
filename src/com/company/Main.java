@@ -11,6 +11,7 @@ public class Main {
         int choice;
 
         while (!closeProgram) {
+            System.out.println();
             System.out.println("\t### Tic-Tac-Toe ###");
             System.out.println();
             System.out.println("Press 1 - New game");
@@ -43,10 +44,38 @@ public class Main {
 
     public static void newGame(){
         boolean gameOver = false;
-        boolean player1Turn = false;
-        boolean player2Turn = false;
+
+        System.out.println("Who goes first ?  X or O ");
+        boolean playerXTurn = false;
+        boolean playerOTurn = false;
+        char choice = input.next().charAt(0);
+
+        switch (choice){
+            case 'x':
+                playerXTurn = true;
+                break;
+            case 'X':
+                playerXTurn = true;
+                break;
+            case 'o':
+                playerOTurn = true;
+                break;
+            case'O':
+                playerOTurn = true;
+                break;
+            default:
+                System.out.println("Invalid option!");
+                newGame();
+                break;
+        }
 
 
+        if(playerXTurn){
+            System.out.println("Player X starts the game !");
+        }
+        else {
+            System.out.println("Player O starts the game ! ");
+        }
 
         char [][] matrix = {
 
@@ -66,9 +95,10 @@ public class Main {
         // 7                            8                            9
         matrix [5][2] = '_';         matrix [5][6] = '_';        matrix [5][10] = '_';
 
-
-
-        while (!gameOver){
+        int turns = 0; // turns
+        int spaceOption = 0;
+        int [] previousOptions = new int[9];
+        while (turns < 10){
             // print the board
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
@@ -76,14 +106,117 @@ public class Main {
                 }
                 System.out.println();
             }
+
+            System.out.println("1 , 2 , 3");
+            System.out.println("4 , 5 , 6");
+            System.out.println("7 , 8 , 9");
+
+            if(playerXTurn){
+                System.out.println("Player X turn");
+            }
+            else {
+                System.out.println("Player O turn");
+            }
+
+            // check if the option is valid
+            boolean validOption = true;
+            while (validOption){
+                System.out.print("Enter your choice: ");
+                spaceOption  = input.nextInt();
+                for (int i = 0; i < previousOptions.length; i++) {
+                    if(spaceOption == previousOptions[i]){
+                        System.out.println("Invalid option");
+                        break;
+                    }else {
+                        previousOptions[turns] = spaceOption;
+                        validOption= false;
+                    }
+                }
+            }
+
+
+            // valid option
+            switch (spaceOption){
+                case 1:
+                    if(playerXTurn){
+                        matrix [1][2] = 'X';
+                    }else {
+                        matrix [1][2] = 'O';
+                    }
+                    break;
+                case 2:
+                    if(playerXTurn){
+                        matrix [1][6] = 'X';
+                    }else {
+                        matrix [1][6] = 'O';
+                    }
+                    break;
+                case 3:
+                    if(playerXTurn){
+                        matrix [1][10] = 'X';
+                    }else {
+                        matrix [1][10] = 'O';
+                    }
+                    break;
+                case 4:
+                    if(playerXTurn){
+                        matrix [3][2] = 'X';
+                    }else {
+                        matrix [3][2] = 'O';
+                    }
+                    break;
+                case 5: if(playerXTurn){
+                    matrix [3][6] = 'X';
+                }else {
+                    matrix [3][6] = 'O';
+                }
+                    break;
+                case 6:
+                    if(playerXTurn){
+                        matrix [3][10] = 'X';
+                    }else {
+                        matrix [3][10] = 'O';
+                    }
+                    break;
+                case 7:
+                    if(playerXTurn){
+                        matrix [5][2] = 'X';
+                    }else {
+                        matrix [5][2] = 'O';
+                    }
+                    break;
+                case 8:
+                    if(playerXTurn){
+                        matrix [5][6] = 'X';
+                    }else {
+                        matrix [5][6] = 'O';
+                    }
+                    break;
+                case 9:
+                    if(playerXTurn){
+                        matrix [5][10] = 'X';
+                    }else {
+                        matrix [5][10] = 'O';
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid option!");
+                    break;
+            }
             // next turn
 
-
-
+            if(playerXTurn){
+                playerXTurn = false;
+                playerOTurn = true;
+            } else {
+                playerXTurn = true;
+                playerOTurn = false;
+            }
+            turns++;
 
 
             // check if game is over
-            gameOver = true;
+           //  gameOver = true;
 
 
             if(gameOver){
@@ -93,5 +226,7 @@ public class Main {
         }
 
     }
+
+
 
 }
