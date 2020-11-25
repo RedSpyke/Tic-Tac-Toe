@@ -67,14 +67,12 @@ public class Main {
                 break;
         }
 
-
         if(playerXTurn){
             System.out.println("Player X starts the game !");
         }
         else {
             System.out.println("Player O starts the game ! ");
         }
-
         char [][] matrix = {
 
 //                0   1  (2)  3   4  5   (6)  7  8   9   10  (11)  12  13
@@ -98,9 +96,9 @@ public class Main {
         int [] previousOptions = new int[9];
         while (!gameOver){
             // print the board
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix[i].length; j++) {
-                    System.out.print(matrix[i][j]);
+            for (char[] chars : matrix) {
+                for (char aChar : chars) {
+                    System.out.print(aChar);
                 }
                 System.out.println();
             }
@@ -125,7 +123,6 @@ public class Main {
                     input.next();
                     System.out.println("Enter your choice: ");
                 }
-
                 spaceOption  = input.nextInt();
 
                 if(spaceOption < 0 || spaceOption > 9){
@@ -212,10 +209,7 @@ public class Main {
                     break;
             }
 
-
             // check if game is over
-
-
             if(matrix [1][2] == matrix [1][6] && matrix [1][2] == matrix [1][10] && matrix [1][2] != '_') {
                 if(playerXTurn){
                     System.out.println("Player X has won the game !");
@@ -223,83 +217,80 @@ public class Main {
                 else {
                     System.out.println("Player O has won the game ! ");
                 }
-            } else if( matrix [3][2] == matrix [3][6] && matrix [3][2] == matrix [3][10] && matrix [3][2] != '_' ){
-                if(playerXTurn){
-                    System.out.println("Player X has won the game !");
-                }
-                else {
-                    System.out.println("Player O has won the game ! ");
-                }
-
-            } else if(matrix [5][2] == matrix [5][6] && matrix [5][2] == matrix [5][10] && matrix [5][2] != '_'){
-                if(playerXTurn){
-                    System.out.println("Player X has won the game !");
-                    gameOver = true;
-                }
-                else {
-                    System.out.println("Player O has won the game ! ");
-                    gameOver = true;
-                }
-
-            } else if(matrix [1][2] == matrix [3][2] && matrix [3][2] == matrix [5][2] && matrix [1][2] != '_'){
-                if(playerXTurn){
-                    System.out.println("Player X has won the game !");
-                    gameOver = true;
-                }
-                else {
-                    System.out.println("Player O has won the game ! ");
-                    gameOver = true;
-                }
-
-            }else if (matrix [1][6] == matrix [3][6] && matrix [1][6] == matrix [5][6] && matrix [1][6] != '_' ){
-                if(playerXTurn){
-                    System.out.println("Player X has won the game !");
-                    gameOver = true;
-                }
-                else {
-                    System.out.println("Player O has won the game ! ");
-                    gameOver = true;
-                }
-
-            }else if(matrix [1][10] == matrix [1][10] && matrix [1][10] == matrix [1][10] && matrix [1][10] != '_'){
-                if(playerXTurn){
-                    System.out.println("Player X has won the game !");
-                    gameOver = true;
-                }
-                else {
-                    System.out.println("Player O has won the game ! ");
-                    gameOver = true;
-                }
-
-            } else if( matrix [1][2] ==  matrix [3][6] && matrix [1][2] == matrix [5][10] && matrix [1][2] != '_'){
-                if(playerXTurn){
-                    System.out.println("Player X has won the game !");
-                    gameOver = true;
-                }
-                else {
-                    System.out.println("Player O has won the game ! ");
-                    gameOver = true;
-                }
-
-            }else if (matrix [1][10] == matrix [3][6] && matrix [5][2] == matrix [1][10] && matrix [1][10] != '_'){
-                if(playerXTurn){
-                    System.out.println("Player X has won the game !");
-                    gameOver = true;
-                }
-                else {
-                    System.out.println("Player O has won the game ! ");
-                    gameOver = true;
-                }
-
-            } else{
-                System.out.println("No winner yet... ");
+                gameOver = true;
             }
+            else if( matrix [3][2] == matrix [3][6] && matrix [3][2] == matrix [3][10] && matrix [3][2] != '_' ){
+                if(playerXTurn){
+                    System.out.println("Player X has won the game !");
+                }
+                else {
+                    System.out.println("Player O has won the game ! ");
+                }
+                gameOver = true;
+            }
+            else if(matrix [5][2] == matrix [5][6] && matrix [5][2] == matrix [5][10] && matrix [5][2] != '_'){
+                if(playerXTurn){
+                    System.out.println("Player X has won the game !");
+                }
+                else {
+                    System.out.println("Player O has won the game ! ");
+                }
+                gameOver = true;
+            }
+            else if(matrix [1][2] == matrix [3][2] && matrix [3][2] == matrix [5][2] && matrix [1][2] != '_'){
+                if(playerXTurn){
+                    System.out.println("Player X has won the game !");
+                }
+                else {
+                    System.out.println("Player O has won the game ! ");
+                }
+                gameOver = true;
+            }
+            else if (matrix [1][6] == matrix [3][6] && matrix [1][6] == matrix [5][6] && matrix [1][6] != '_' ){
+                if(playerXTurn){
+                    System.out.println("Player X has won the game !");
+                }
+                else {
+                    System.out.println("Player O has won the game ! ");
+                }
+                gameOver = true;
 
-            if(turns == 8){
+            }
+            else if (matrix [1][10] == matrix [3][10] && matrix [1][10] == matrix [5][10] && matrix [1][10] != '_' ){
+                if(playerXTurn){
+                    System.out.println("Player X has won the game !");
+                }
+                else {
+                    System.out.println("Player O has won the game ! ");
+                }
+                gameOver = true;
+
+            }
+            else if (matrix [1][10] == matrix [3][6] && matrix [1][10] == matrix [5][2] && matrix [1][10] != '_'){
+                if(playerXTurn){
+                    System.out.println("Player X has won the game !");
+                }
+                else {
+                    System.out.println("Player O has won the game ! ");
+                }
+                gameOver = true;
+            }
+            else if( matrix [1][2] ==  matrix [3][6] && matrix [1][2] == matrix [5][10] && matrix [1][2] != '_'){
+                if(playerXTurn){
+                    System.out.println("Player X has won the game !");
+                }
+                else {
+                    System.out.println("Player O has won the game ! ");
+                }
+                gameOver = true;
+            }
+            else if(turns == 8){
                 System.out.println("Draw");
                 gameOver = true;
             }
-
+            else{
+                System.out.println("No winner yet... ");
+            }
             if(gameOver){
                 System.out.println("!!! Game over !!!");
             }
