@@ -120,6 +120,12 @@ public class Main {
             boolean validOption = false;
             while (!validOption){
                 System.out.print("Enter your choice: ");
+                while (!input.hasNextInt()){
+                    System.out.println("Wrong input data!");
+                    input.next();
+                    System.out.println("Enter your choice: ");
+                }
+
                 spaceOption  = input.nextInt();
 
                 if(spaceOption < 0 || spaceOption > 9){
@@ -135,8 +141,6 @@ public class Main {
                         }
                     }
                 }
-
-
             }
             previousOptions[turns] = spaceOption;
             // valid option
@@ -223,8 +227,6 @@ public class Main {
             if(turns == 8){
                 gameOver = true;
             }
-
-
 
             if(gameOver){
                 System.out.println("!!! Game over !!!");
