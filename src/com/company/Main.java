@@ -122,15 +122,21 @@ public class Main {
                 System.out.print("Enter your choice: ");
                 spaceOption  = input.nextInt();
 
-                for (int i = 0; i < previousOptions.length; i++) {
-                    if(spaceOption == previousOptions[i]){
-                        System.out.println("Invalid option");
-                        break;
-                    }
-                    if(i == previousOptions.length - 1){
-                        validOption = true;
+                if(spaceOption < 0 || spaceOption > 9){
+                    System.out.println("Invalid option");
+                } else{
+                    for (int i = 0; i < previousOptions.length; i++) {
+                        if(spaceOption == previousOptions[i]){
+                            System.out.println("Invalid option");
+                            break;
+                        }
+                        if(i == previousOptions.length - 1){
+                            validOption = true;
+                        }
                     }
                 }
+
+
             }
             previousOptions[turns] = spaceOption;
             // valid option
