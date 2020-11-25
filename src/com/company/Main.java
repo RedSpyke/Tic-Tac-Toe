@@ -36,10 +36,8 @@ public class Main {
                 default:
                     System.out.println("Invalid option!");
                     break;
-
             }
         }
-
     }
 
     public static void newGame(){
@@ -97,7 +95,7 @@ public class Main {
 
         int turns = 0; // turns
         int spaceOption = 0;
-        int [] previousOptions = new int[9];
+        int [] previousOptions = new int[8];
         while (turns < 10){
             // print the board
             for (int i = 0; i < matrix.length; i++) {
@@ -119,22 +117,22 @@ public class Main {
             }
 
             // check if the option is valid
-            boolean validOption = true;
-            while (validOption){
+            boolean validOption = false;
+            while (!validOption){
                 System.out.print("Enter your choice: ");
                 spaceOption  = input.nextInt();
+
                 for (int i = 0; i < previousOptions.length; i++) {
                     if(spaceOption == previousOptions[i]){
                         System.out.println("Invalid option");
                         break;
-                    }else {
-                        previousOptions[turns] = spaceOption;
-                        validOption= false;
+                    }
+                    if(i == previousOptions.length - 1){
+                        validOption = true;
                     }
                 }
             }
-
-
+            previousOptions[turns] = spaceOption;
             // valid option
             switch (spaceOption){
                 case 1:
@@ -214,19 +212,18 @@ public class Main {
             }
             turns++;
 
-
             // check if game is over
-           //  gameOver = true;
+
+            if(turns == 8){
+                gameOver = true;
+            }
+
 
 
             if(gameOver){
                 System.out.println("!!! Game over !!!");
             }
-
         }
-
     }
-
-
 
 }
