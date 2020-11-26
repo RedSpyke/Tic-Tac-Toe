@@ -285,7 +285,16 @@ public class Main {
                 gameOver = true;
             }
             else if(turns == 8){
+                System.out.println();
                 System.out.println("Draw");
+                System.out.println();
+                // print the board
+                for (char[] chars : matrix) {
+                    for (char aChar : chars) {
+                        System.out.print(aChar);
+                    }
+                    System.out.println();
+                }
                 gameOver = true;
             }
             else{
